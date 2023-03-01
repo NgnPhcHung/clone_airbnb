@@ -23,7 +23,7 @@ export default function Nav(props) {
   const scrollPos = useScrollPosition()
   const [showSlider, setShowSlider] = useState(true)
   useEffect(() => {
-    scrollPos > 0? setFixedClass(true) : setFixedClass(false)
+    !props.inherit && scrollPos > 0? setFixedClass(true) : setFixedClass(false)
   }, [scrollPos]);
   const [width, ] = useWindowSize()
 
@@ -130,9 +130,10 @@ const Container = styled(motion.div)`
   }
 
   @media (max-width: 740px){
-    height: 6rem;
+    height: fit-content;
     display: flex;
     justify-content: center;
+    margin: 5px auto;
     .right{
       display: none;
     }

@@ -1,9 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function Logo() {
   return (
-    <LogoContainer>airbnb</LogoContainer>
+    <LogoContainer>
+      <Link to='/' >
+        airbnb
+      </Link>
+    </LogoContainer>
   )
 }
 

@@ -1,10 +1,9 @@
-import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import BookingPanel from '../../Components/RoomInfo/BookingPanel'
 import Details from '../../Components/RoomInfo/Details'
-import Footer from '../../Components/Footer'
+import gsap from 'gsap'
 gsap.registerPlugin(ScrollTrigger);
 
 export default function RoomDetails() {
@@ -25,7 +24,6 @@ export default function RoomDetails() {
             start: "480px",
             end: "+=1500px",
             scrub: true,
-            
           }
         }
       );
@@ -36,7 +34,6 @@ export default function RoomDetails() {
     <Container ref={ref} className='roomInfo'>
       <Details/>
       <BookingPanel/>
-      <Footer />
     </Container>
   )
 }
@@ -46,5 +43,11 @@ const Container = styled.div`
   height:fit-content;
   display: flex;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;;
+
+  @media (max-width: 740px){
+    width:calc(100% - 10px);
+    justify-content: center;
+    align-items: center
+  }
 `

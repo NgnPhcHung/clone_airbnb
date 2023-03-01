@@ -65,6 +65,10 @@ const Container= styled.div`
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 740px){
+    display: none;
+  }
 `
 const Body = styled.div`
   height: fit-content;

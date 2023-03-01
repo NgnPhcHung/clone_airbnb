@@ -10,9 +10,6 @@ import useWindowSize from '../../Hook/useWindowSize';
 
 function MobileIntro ({loading, title}) {
   return <Container>
-  <Nav show={false} >
-    <StartSearchBox/>
-  </Nav>
   <ImagesIntro/>
   {
   loading? 
@@ -52,10 +49,7 @@ export default function Intro() {
   },[])
 
   return width > 740 ? (
-    <Container>
-      <Nav show={false} >
-        <StartSearchBox/>
-      </Nav>
+    <Container id='photo' >
       {
       loading? 
         <SkeletonLoading>
@@ -73,7 +67,7 @@ export default function Intro() {
 }
 
 const Container= styled.div`
-  height: 35rem;
+  height: fit-content;
   width: calc(100% - 25vw);
   display: flex;
   justify-content: space-evenly;

@@ -6,6 +6,7 @@ import { reviewsArr } from './randomReview';
 import Skeleton from 'react-loading-skeleton';
 import { TbChevronRight } from 'react-icons/tb';
 import CheckInOut from '../../Section/RoomInfo/CheckInOut';
+import MapChart from './MapChart';
 
 const SkeletonComponent = () =>{
   return <Container>
@@ -54,6 +55,7 @@ const SkeletonComponent = () =>{
 }
 
 export default function Details() {
+
   const [loading, setLoading] = useState(true)
   const lorem = new LoremIpsum({
     wordsPerSentence: {
@@ -97,10 +99,11 @@ export default function Details() {
     }, 2200)
     return () => clearTimeout(delayRender)
   },[])
+
   return loading? 
     <SkeletonComponent/>: (
-    <Container>
-      <Owner>
+    <Container >
+      <Owner id='info'>
         <div className='own'>
           <h3>{owner.own}</h3>
           <div className="houseDetails">
@@ -130,8 +133,8 @@ export default function Details() {
         <div className="coverText">{lorem.generateSentences(10)}.. :)</div>
         <p>Show more <TbChevronRight/></p>
       </Cover>
-      <Offers>
-        <h2>What this place offers</h2>
+      <Offers id='offers' >
+        <h2 >What this place offers</h2>
         <div className="offersWrapper">
           {
           offers.map((re, i) =><div key={i} className='offers'>
@@ -142,7 +145,7 @@ export default function Details() {
         </div>
       </Offers>
       <CheckInOut/>
-
+      <MapChart/>
     </Container>
   )
 }
@@ -150,9 +153,9 @@ const Container = styled.div`
   width: 70%;
   height: 100%;
   display: block;
-
+  margin-top: 1rem;
   @media (max-width: 740px){
-    width: 95vw;
+    width: 95%;
   }
 `
 const Owner = styled.div`
@@ -271,8 +274,8 @@ const Cover = styled.div`
   }
 `
 const Offers = styled.div`
-  margin-top: 1rem;
-  padding: 1rem auto;
+  margin-top: 3rem;
+  /* padding: 1rem auto; */
   width: 100%;
   position: relative;
   &::after{
