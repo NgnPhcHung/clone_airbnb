@@ -1,25 +1,18 @@
-import { LoremIpsum } from "lorem-ipsum";
 import React, { useEffect, useState } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
-  Annotation,
 } from "react-simple-maps";
 import styled from "styled-components";
-import useWindowSize from "../../Hook/useWindowSize";
 import {BsFillHouseFill} from 'react-icons/bs'
+import {AiFillCaretDown} from 'react-icons/ai'
+import {motion} from 'framer-motion'
+
 
 const MapChart = () => {
-  const [width, height] = useWindowSize()
   const [random, setRandom] = useState({X:0, Y:0, Z:0})
-  const [subject, setSubject] = useState({x:0, y:0})
-  const lorem = new LoremIpsum({
-    wordsPerSentence: {
-      max: 7,
-      min: 4
-    }
-  });
+ 
   useEffect(() =>{
     var X = Math.ceil(Math.random() * 180) * (Math.round(Math.random()) ? 1 : -1)
     var Y = Math.ceil(Math.random() * 180) * (Math.round(Math.random()) ? 1 : -1)
@@ -27,8 +20,23 @@ const MapChart = () => {
     setRandom({X, Y, Z})
     if(X <0) X *=-1
     if(Y <0) Y *=-1
-    setSubject({x:X, y:Y})
   },[])
+
+  const hoverVariant = {
+    initial:{
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        delay: 3
+      }
+    },
+    hover:{
+      opacity: 0,
+      transition:{
+        duration: 0.5,
+      }
+    }
+  }
 
   return (
     <Container  iner id='location'>
@@ -53,23 +61,23 @@ const MapChart = () => {
           ))
         }
       </Geographies>
-        {/* <Annotation
-          subject={[subject.x, subject.y]}
-          dx={-90}
-          dy={-30}
-          connectorProps={{
-            stroke: "#FF5533",
-            strokeWidth: 3,
-            strokeLinecap: "round"
-          }}
-        >
-          <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#F53">
-            {lorem.generateWords(1)}
-          </text>
-        </Annotation> */}
       </ComposableMap>
       <Marker>
         <div className="round"><BsFillHouseFill className="icon"/></div>
+        <motion.div 
+          className="dialog"
+          variants={hoverVariant}
+          whileHover='hover'
+          exit='initial'
+          transition={{
+            delay: 3
+          }}
+        >
+          <Dialog>
+            <p>Exact location provied after booking.</p>
+            <AiFillCaretDown className="down" />
+          </Dialog>
+        </motion.div>
       </Marker>
     </Container>
   );
@@ -111,7 +119,35 @@ const Marker = styled.div`
     font-size: ${props => props.theme.fontxl};
     color: ${props => props.theme.body};
   }
+
+  .dialog{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+  }
   
+`
+
+const Dialog = styled.div`
+  background-color: ${props => props.theme.body};
+  border-radius: 10px;
+  font-size: ${props => props.theme.fontsm};
+  position: relative;
+  width: max-content;
+  padding: 0.5rem 1rem;
+  height: 2rem;
+  
+  .down{
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+    font-size: ${props => props.theme.fontxl};
+    color: ${props => props.theme.body};
+  }
 `
 
 export default MapChart;
