@@ -83,7 +83,7 @@ const Container = styled.div`
 `
 const Top = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-column-gap: 20px;
   width: 100%;
   height: fit-content;
@@ -111,6 +111,9 @@ const Under = styled.div`
 const List = styled.ul`
   list-style: none;
   width: 10rem;
+  @media (max-width: 740px){
+    width: calc(95% - 20px);
+  }
 `
 const ListItem = styled.li`
   margin-bottom: 5px;

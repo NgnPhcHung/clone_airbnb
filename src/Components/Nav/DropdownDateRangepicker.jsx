@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { DateRangePicker, DateRange } from 'react-date-range';
+import {  DateRange } from 'react-date-range';
 import * as locales from 'react-date-range/dist/locale';
 import { addDays } from 'date-fns';
-import useWindowSize from '../../Hook/useWindowSize';
 
 export default function DropdownDateRangepicker(props) {
   const [ranges, setRange] = useState([
@@ -14,11 +13,11 @@ export default function DropdownDateRangepicker(props) {
         endDate: addDays(new Date(), 7),
         key: 'selection'
       }
-]);
+    ]);
 
-const onChange = (item)=>{
-    setRange([item.selection])
-}
+    const onChange = (item)=>{
+        setRange([item.selection])
+    }
 
   return (
     <Container>

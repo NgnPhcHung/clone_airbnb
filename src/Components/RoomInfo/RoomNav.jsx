@@ -79,9 +79,10 @@ const Item = styled.p`
   }
 `
 const Mobile = styled.div`
-height: 90%;
+  height: 3rem;
+  width: 30vw;
   font-weight: bold;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 `

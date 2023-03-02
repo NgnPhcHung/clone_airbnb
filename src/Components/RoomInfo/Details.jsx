@@ -165,6 +165,7 @@ const Owner = styled.div`
   position: relative;
   width: max-content;
   height: 5rem;
+ 
   &::after{
     content: '';
     width: 70%;
@@ -207,6 +208,24 @@ const Owner = styled.div`
     right: -15%;
     background-color: ${props => `rgba(${props.theme.textRgba},0.6)`};
   }
+
+  @media (max-width: 740px){
+    height: fit-content;
+    padding: 4vh auto;
+
+    .houseDetails{
+      display: none;
+    }
+    & .avata{
+      grid-column: 1/2;
+    }
+    .own h3{
+      width: 95vw;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+  }
 `
 const Review = styled.div`
   margin-top: 1rem;
@@ -240,7 +259,15 @@ const Review = styled.div`
   .description{
     color: ${props => `rgba(${ props.theme.textRgba}, 0.8)`};
     font-size: ${props => props.theme.fontxs};
-    grid-column: 2/3
+    grid-column: 2/3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (max-width: 740px){
+    width: 95vw;
   }
 `
 const Cover = styled.div`
@@ -288,8 +315,8 @@ const Offers = styled.div`
   }
   .offersWrapper{
     display: grid;
-    width: 80%;
-    grid-template-columns: repeat(2, minmax(min(22rem, 100%), 1fr));
+    width: 45vw;
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
     grid-gap:5px 10px;
     place-items: center stretch;
   }
@@ -304,5 +331,13 @@ const Offers = styled.div`
     font-size: ${props => props.theme.fontsm};
     font-weight: bold;
   }
-  
+  @media (max-width: 740px){
+    .offersWrapper{
+      width: 95vw;
+      grid-template-columns: 1fr;
+    }
+    .title{
+      width: 100%;
+    }
+  }
 `

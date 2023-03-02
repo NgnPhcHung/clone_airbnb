@@ -64,5 +64,7 @@ const Mobile = styled.div`
   font-weight: bold;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  height: 3rem;
+  width: 30vw;
 `

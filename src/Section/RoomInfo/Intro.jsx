@@ -29,6 +29,7 @@ export default function Intro() {
   const [title, setTitle] = useState({title:'', loca: ''}) 
   const [loading, setLoading] = useState(true)
   useEffect(() =>{
+    document.title = 'Loading ...'
     const componentInfo = () =>{
       const lorem = new LoremIpsum({
         wordsPerSentence: {

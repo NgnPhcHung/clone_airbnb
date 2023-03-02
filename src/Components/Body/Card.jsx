@@ -9,8 +9,10 @@ import { LoremIpsum } from "lorem-ipsum";
 import moment from "moment/moment";
 import {BsFillStarFill, BsFillHeartFill} from 'react-icons/bs'
 import { Link } from 'react-router-dom';
+import useWindowSize from '../../Hook/useWindowSize';
 
 export default function Card({id}) {
+  const [width, ] = useWindowSize()
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [card, setCard] = useState({image: [], title: '', rating: 0, distance: 0, from: '', to: '', price: 0})
@@ -90,7 +92,7 @@ export default function Card({id}) {
   };
   return !loading&&(
     <CardContainer>
-      <Link to={`/room/${id}`} target="_blank" rel="noopener noreferrer">
+      <Link to={`/room/${id}`} target={width> 740&& '_blank'} rel={width > 740 && 'noopener noreferrer'}>
         <Heart>
           <BsFillHeartFill className='heart' />
         </Heart>

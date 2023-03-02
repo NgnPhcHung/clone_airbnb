@@ -30,6 +30,7 @@ export default function RoomInfor() {
             start: "200px",
             end: "end end",
             scrub: true,
+            
           }
         }
       );

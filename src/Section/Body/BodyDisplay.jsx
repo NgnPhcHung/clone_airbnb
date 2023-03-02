@@ -1,8 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import Card from '../Components/Body/Card'
+import Card from '../../Components/Body/Card'
 import { createClient } from 'pexels';
-import SkeletonCard from '../Components/Body/SkeletonCard';
+import SkeletonCard from '../../Components/Body/SkeletonCard';
 
 export default function BodyDisplay() {
   const ref = useRef()
