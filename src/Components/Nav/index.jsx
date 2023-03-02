@@ -42,7 +42,7 @@ export default function Nav(props) {
     fix:{
       position: 'fixed',
       transform: ['translateY(-40px)','translateY(0)'],
-      top: ['-5%', '0%'],
+      top: ['-5%', '0'],
     }
   }
   return (
@@ -105,7 +105,7 @@ const RightContainer = styled.div`
 `
 const Container = styled(motion.div)`
   width: 100vw;
-  height: ${props => props.show? '11.5rem' : '6.5rem'};
+  height: ${props => props.show? '11.5rem' : '7rem'};
   background-color: ${props => props.theme.body};
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -133,7 +133,7 @@ const Container = styled(motion.div)`
     height: fit-content;
     display: flex;
     justify-content: center;
-    margin: 5px auto;
+    padding: 0.5rem 0;
     .right{
       display: none;
     }

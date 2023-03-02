@@ -92,7 +92,7 @@ export default function Card({id}) {
   };
   return !loading&&(
     <CardContainer>
-      <Link to={`/room/${id}`} target={width> 740&& '_blank'} rel={width > 740 && 'noopener noreferrer'}>
+      <Link to={`/room/${id}`} target={width> 740 ? '_blank':''} rel={width > 740 ? 'noopener noreferrer' : ''}>
         <Heart>
           <BsFillHeartFill className='heart' />
         </Heart>

@@ -8,7 +8,7 @@ import BodyDisplay from '../Section/Body/BodyDisplay'
 import Map from '../Section/Body/Map'
 
 export default function Home() {
-  const [toggleView, setToggleView] = useState(false)
+  const [toggleView, setToggleView] = useState(true)
 
   return (
     <HomeContainer>
@@ -42,7 +42,6 @@ const HomeContainer = styled.div`
 const ToggleViewBtn = styled.button`
   background-color: ${props => props.theme.text};
   height: 3.5rem;
-  width: calc(30% - 20vw);
   padding: 0 1rem;
   position: fixed;
   bottom: 10%;
@@ -55,6 +54,8 @@ const ToggleViewBtn = styled.button`
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
+  width: clamp(160px,10rem, 200px);
+
   &:hover{
     transform: scale(1.1);
   }

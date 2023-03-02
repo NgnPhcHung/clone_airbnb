@@ -11,12 +11,13 @@ import { LoremIpsum } from "lorem-ipsum";
 import useWindowSize from "../../Hook/useWindowSize";
 import { createClient } from "pexels";
 import { Link } from "react-router-dom";
+import {HiLocationMarker} from 'react-icons/hi'
 
 export default function Map() {
   const [width, ] = useWindowSize()
   const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
   const [coordinates, setCoordinates] = useState([
-    { markerOffset: 15, name: "", coordinates: [0, 0], id:'' },
+    { markerOffset: 15, name: "Hà Nội", coordinates: [104.6, 25.7], id:'' },
   ]);
   const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -71,7 +72,7 @@ export default function Map() {
   }, []);
 
   useLayoutEffect(() =>{
-    setCoordinates([ ])
+    setCoordinates([{ markerOffset: 15, name: "Hà Nội", coordinates: [104.6, 25.7], id:'' }])
   },[])
 
   return (
@@ -99,8 +100,8 @@ export default function Map() {
           {coordinates.map(({ name, coordinates, markerOffset, id }, i) => {
             return (
               <Marker key={i} coordinates={coordinates}>
-                <Link to={`/room/${id}`} target={width> 740&& '_blank'} rel={width > 740 && 'noopener noreferrer'}>
-                  <g
+                <Link to={`/room/${id}`} target={width> 740 ? '_blank':''} rel={width > 740 ? 'noopener noreferrer' : ''}>
+                  {/* <g
                     fill="none"
                     stroke="#FF5533"
                     strokeWidth="1"
@@ -111,7 +112,8 @@ export default function Map() {
                   >
                     <circle cx="12" cy="10" r="3" />
                     <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" id="scale" className="two grow" />
-                  </g>
+                  </g> */}
+                  <HiLocationMarker className="locationIcon" />
                   <text
                     textAnchor="middle"
                     y={markerOffset}
@@ -137,5 +139,9 @@ const Container = styled.div`
   width: 100vw;
   background-color: #4293ad;
   overflow: hidden;
-
+  .locationIcon{
+    fill: ${props => props.theme.logo};
+    stroke: ${props => props.theme.body};
+    stroke-width: 2px;
+  }
 `;
